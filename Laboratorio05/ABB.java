@@ -23,5 +23,21 @@ public class ABB<T extends Comparable<T>> {
         return nodo;
     }
 
+    // buscar un valor en el árbol
+    public Nodo<T> buscar(T valor) {
+        return buscarRecursivo(raiz, valor);
+    }
+
+    private Nodo<T> buscarRecursivo(Nodo<T> nodo, T valor) {
+        if (nodo == null || nodo.getDato().equals(valor)) {
+            return nodo;
+        }
+        if (valor.compareTo(nodo.getDato()) < 0) {
+            return buscarRecursivo(nodo.getIzquierda(), valor);
+        } else {
+            return buscarRecursivo(nodo.getDerecha(), valor);
+        }
+    }
+
 
 }
