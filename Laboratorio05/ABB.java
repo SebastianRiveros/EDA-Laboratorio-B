@@ -111,5 +111,34 @@ public class ABB<T extends Comparable<T>> {
         return sucesor != null ? sucesor.getDato() : null;
     }
 
+    // eliminar un valor del árbol
+    public void eliminar(T valor) {
+        raiz = eliminarRecursivo(raiz, valor);
+    }
+
+    private Nodo<T> eliminarRecursivo(Nodo<T> nodo, T valor) {
+        if (nodo == null) {
+            return null;
+        }
+
+        if (valor.compareTo(nodo.getDato()) < 0) {
+            nodo.setIzquierda(eliminarRecursivo(nodo.getIzquierda(), valor));
+        } else if (valor.compareTo(nodo.getDato()) > 0) {
+            nodo.setDerecha(eliminarRecursivo(nodo.getDerecha(), valor));
+        } else {
+            // nodo con un solo hijo o sin hijos
+            if (nodo.getIzquierda() == null) {
+                return nodo.getDerecha();
+            } else if (nodo.getDerecha() == null) {
+                return nodo.getIzquierda();
+            }
+
+            // nodo con dos hijos, obtener el sucesor (mínimo del subárbol derecho)
+            nodo.setDato(minimoRecursivo(nodo.getDerecha()).getDato());
+            nodo.setDerecha(eliminarRecursivo(nodo.getDerecha(), nodo.getDato()));
+        }
+        return nodo;
+    }
+
 
 }
