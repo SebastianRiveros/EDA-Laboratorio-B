@@ -140,5 +140,43 @@ public class ABB<T extends Comparable<T>> {
         return nodo;
     }
 
+    // métodos para recorrer el árbol (inorden, preorden, postorden)
+    public void inOrden() {
+        inOrdenRecursivo(raiz);
+        System.out.println();
+    }
 
+    private void inOrdenRecursivo(Nodo<T> nodo) {
+        if (nodo != null) {
+            inOrdenRecursivo(nodo.getIzquierda());
+            System.out.print(nodo.getDato() + " ");
+            inOrdenRecursivo(nodo.getDerecha());
+        }
+    }
+
+    public void preOrden() {
+        preOrdenRecursivo(raiz);
+        System.out.println();
+    }
+
+    private void preOrdenRecursivo(Nodo<T> nodo) {
+        if (nodo != null) {
+            System.out.print(nodo.getDato() + " ");
+            preOrdenRecursivo(nodo.getIzquierda());
+            preOrdenRecursivo(nodo.getDerecha());
+        }
+    }
+
+    public void postOrden() {
+        postOrdenRecursivo(raiz);
+        System.out.println();
+    }
+
+    private void postOrdenRecursivo(Nodo<T> nodo) {
+        if (nodo != null) {
+            postOrdenRecursivo(nodo.getIzquierda());
+            postOrdenRecursivo(nodo.getDerecha());
+            System.out.print(nodo.getDato() + " ");
+        }
+    }
 }
