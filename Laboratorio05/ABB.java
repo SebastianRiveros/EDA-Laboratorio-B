@@ -88,5 +88,28 @@ public class ABB<T extends Comparable<T>> {
         return predecesor != null ? predecesor.getDato() : null;
     }
 
+    // encontrar el sucesor de un valor
+    public T sucesor(T valor) {
+        Nodo<T> actual = buscar(valor);
+        if (actual == null) {
+            return null;
+        }
+        if (actual.getDerecha() != null) {
+            return minimoRecursivo(actual.getDerecha()).getDato();
+        }
+
+        Nodo<T> sucesor = null;
+        Nodo<T> ancestro = raiz;
+        while (ancestro != actual) {
+            if (valor.compareTo(ancestro.getDato()) < 0) {
+                sucesor = ancestro;
+                ancestro = ancestro.getIzquierda();
+            } else {
+                ancestro = ancestro.getDerecha();
+            }
+        }
+        return sucesor != null ? sucesor.getDato() : null;
+    }
+
 
 }
