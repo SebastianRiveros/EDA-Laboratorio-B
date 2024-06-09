@@ -65,5 +65,28 @@ public class ABB<T extends Comparable<T>> {
         return maximoRecursivo(nodo.getDerecha());
     }
 
+    // encontrar el predecesor de un valor
+    public T predecesor(T valor) {
+        Nodo<T> actual = buscar(valor);
+        if (actual == null) {
+            return null;
+        }
+        if (actual.getIzquierda() != null) {
+            return maximoRecursivo(actual.getIzquierda()).getDato();
+        }
+
+        Nodo<T> predecesor = null;
+        Nodo<T> ancestro = raiz;
+        while (ancestro != actual) {
+            if (valor.compareTo(ancestro.getDato()) > 0) {
+                predecesor = ancestro;
+                ancestro = ancestro.getDerecha();
+            } else {
+                ancestro = ancestro.getIzquierda();
+            }
+        }
+        return predecesor != null ? predecesor.getDato() : null;
+    }
+
 
 }
