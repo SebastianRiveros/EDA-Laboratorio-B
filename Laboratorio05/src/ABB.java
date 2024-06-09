@@ -5,6 +5,10 @@ public class ABB<T extends Comparable<T>> {
         this.raiz = null;
     }
 
+    public Nodo<T> getRaiz(){
+        return this.raiz;
+    }
+    
     // insertar un valor en el árbol
     public void insertar(T valor) {
         raiz = insertarRecursivo(raiz, valor);
