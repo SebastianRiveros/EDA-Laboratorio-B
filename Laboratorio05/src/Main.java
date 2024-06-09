@@ -1,7 +1,7 @@
 public class Main {
     public static void main(String[] args) {
         ABB<Integer> abb = new ABB<>();
-
+        System.setProperty("org.graphstream.ui", "org.graphstream.ui.swing");
         //insertar valores en el ABB
         abb.insertar(50);
         abb.insertar(30);
@@ -35,5 +35,9 @@ public class Main {
         abb.eliminar(20);
         System.out.print("InOrden despues de eliminar 20: ");
         abb.inOrden();
+
+        //Visualizar un arbol
+        GraphStreamVisualizer<Integer> visualizer = new GraphStreamVisualizer<>();
+        visualizer.visualizar(abb);
     }
 }
