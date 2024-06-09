@@ -52,5 +52,18 @@ public class ABB<T extends Comparable<T>> {
         return minimoRecursivo(nodo.getIzquierda());
     }
 
+    // encontrar el valor máximo
+    public T maximo() {
+        Nodo<T> nodo = maximoRecursivo(raiz);
+        return nodo != null ? nodo.getDato() : null;
+    }
+
+    private Nodo<T> maximoRecursivo(Nodo<T> nodo) {
+        if (nodo == null || nodo.getDerecha() == null) {
+            return nodo;
+        }
+        return maximoRecursivo(nodo.getDerecha());
+    }
+
 
 }
