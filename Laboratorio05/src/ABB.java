@@ -1,4 +1,3 @@
-// ABB.java
 public class ABB<T extends Comparable<T>> {
     private Nodo<T> raiz;
 
@@ -140,7 +139,7 @@ public class ABB<T extends Comparable<T>> {
         return nodo;
     }
 
-    // métodos para recorrer el árbol (inorden, preorden, postorden)
+    // métodos para recorrer el árbol, inorden-preorden-postorden
     public void inOrden() {
         inOrdenRecursivo(raiz);
         System.out.println();
