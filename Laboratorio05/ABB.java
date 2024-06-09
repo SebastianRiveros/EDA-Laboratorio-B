@@ -39,5 +39,18 @@ public class ABB<T extends Comparable<T>> {
         }
     }
 
+    // encontrar el valor mínimo
+    public T minimo() {
+        Nodo<T> nodo = minimoRecursivo(raiz);
+        return nodo != null ? nodo.getDato() : null;
+    }
+
+    private Nodo<T> minimoRecursivo(Nodo<T> nodo) {
+        if (nodo == null || nodo.getIzquierda() == null) {
+            return nodo;
+        }
+        return minimoRecursivo(nodo.getIzquierda());
+    }
+
 
 }
